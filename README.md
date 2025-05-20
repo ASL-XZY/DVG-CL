@@ -14,7 +14,7 @@ pip install -r requirements.txt
 
 ```
 .
-├── model.py                 # DVG-CL model
+├── model.py                # DVG-CL model
 ├── gnn_layer.py            # GNN and HGNN layers
 ├── utils.py                # Code containing data preprocessing and other operations.
 ├── CVC_loss.py             # Cross-View Contrasting Loss
