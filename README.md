@@ -14,6 +14,7 @@ pip install -r requirements.txt
 
 ```
 .
+├── data                    # The folder for storing data
 ├── model.py                # DVG-CL model
 ├── gnn_layer.py            # GNN and HGNN layers
 ├── utils.py                # Code containing data preprocessing and other operations.
