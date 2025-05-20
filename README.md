@@ -20,7 +20,7 @@ pip install -r requirements.txt
 ├── utils.py                # Code containing data preprocessing and other operations.
 ├── CVC_loss.py             # Cross-View Contrasting Loss
 ├── train.py                # Training script for pretraining DVG-CL
-├── downstream_no_val.py    # Linear classifier training on learned embeddings
+├── downstream.py           # Linear classifier training on learned embeddings
 ├── requirements.txt
 └── README.md
 ```
