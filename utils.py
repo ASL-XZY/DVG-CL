@@ -69,6 +69,47 @@ def Dot_Graph_Construction(node_features, use_cuda, mask_prob):
 
     return Adj
 
+def Dot_Graph_Construction_topk(node_features, use_cuda, mask_prob, topk=8):
+    # node_features size is (bs, N, dimension)
+    # output size is (bs, N, N)
+    bs, N, dimen = node_features.size()
+
+    node_features_1 = torch.transpose(node_features, 1, 2)
+
+    Adj = torch.bmm(node_features, node_features_1)  # (bs, N, N)
+
+    eyes_like = torch.eye(N).repeat(bs, 1, 1)
+    if use_cuda:
+        eyes_like = eyes_like.cuda()
+
+    eyes_like_inf = eyes_like * 1e8
+    Adj = F.leaky_relu(Adj - eyes_like_inf)
+
+    Adj = F.softmax(Adj, dim=-1)
+
+    # Apply random mask to the adjacency matrix
+    mask = (torch.rand(Adj.size()) > mask_prob).float()
+    if use_cuda:
+        mask = mask.cuda()
+    Adj = Adj * mask
+
+    # top-k 
+    topk_mask = torch.zeros_like(Adj)
+    topk_indices = torch.topk(Adj, topk, dim=-1).indices
+    batch_indices = torch.arange(bs).view(-1, 1, 1).expand(-1, N, topk)
+    row_indices = torch.arange(N).view(1, -1, 1).expand(bs, -1, topk)
+
+    if use_cuda:
+        batch_indices = batch_indices.cuda()
+        row_indices = row_indices.cuda()
+
+    topk_mask[batch_indices, row_indices, topk_indices] = 1.0
+    Adj = Adj * topk_mask
+
+    Adj = Adj + eyes_like
+
+    return Adj
+
 
 def Eu_dis(x):
     x = np.mat(x)
