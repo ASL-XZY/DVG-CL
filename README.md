@@ -1,6 +1,7 @@
 # DVG-CL: Dual-view Graph Contrastive Learning for Multivariate Time Series Classification
 
-This repository provides the official implementation of the **DVG-CL** model for multivariate time series classification
+This repository provides the official implementation of the **DVG-CL** model for multivariate time series classification.
+
 Our paper is currently under review at Neural Networks (NN).
 
 ## 🔧 Environment
