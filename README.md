@@ -61,3 +61,17 @@ python downstream_no_val.py \
     --data_dir ./data \
     --model_path contrastive_model.pth
 ```
+
+
+## 📜 Citation
+If you use this code, please cite:
+```
+@article{XIAO2025107859,
+  title={Exploring dual-view graph structures: Contrastive learning with graph and hypergraph for multivariate time series classification},
+  author={Ziyi Xiao and Cong Luo and Jiajia Hu and Guodong Sa and Yueyang Wang},
+  journal={Neural Networks},
+  volume = {192},
+  pages = {107859},
+  year = {2025}
+}
+```
