@@ -1,4 +1,4 @@
-# DVG-CL: Exploring Dual-View Graph Structures: Contrastive Learning with Graph and Hypergraph for Multivariate Time Series Classification
+# Exploring Dual-View Graph Structures: Contrastive Learning with Graph and Hypergraph for Multivariate Time Series Classification
 
 This repository provides the official implementation of the **DVG-CL** model for multivariate time series classification.
 
